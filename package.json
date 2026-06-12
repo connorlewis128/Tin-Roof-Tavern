@@ -1,0 +1,9 @@
+{
+  "name": "tin-roof-tavern",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "puppeteer": "^18.2.1"
+  }
+}

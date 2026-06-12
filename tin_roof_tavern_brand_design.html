@@ -1,0 +1,420 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+  :root {
+    --navy: #3d5a72;
+    --navy-dark: #2e4a60;
+    --navy-light: #4a6a82;
+    --gold: #c8a043;
+    --gold-light: #e2b85a;
+    --cream: #f0e6cc;
+    --cream-dim: rgba(240,230,204,0.7);
+    --cream-faint: rgba(240,230,204,0.15);
+    --teal: #8abaab;
+    --white: #fff;
+  }
+
+  .menu-page {
+    background: var(--navy);
+    font-family: 'Crimson Text', serif;
+    color: var(--cream);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+  }
+
+  .bracketed {
+    position: relative;
+    padding: 1.25rem 1.5rem;
+  }
+  .bracketed::before, .bracketed::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+  .bracketed::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+  .bracketed::after  { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+
+  .bracketed-bottom { position: relative; padding: 1.25rem 1.5rem; }
+  .bracketed-bottom::before, .bracketed-bottom::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+  .bracketed-bottom::before { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+  .bracketed-bottom::after  { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+  .wf-nav {
+    background: var(--navy-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 56px;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  .wf-logo-mark { display: flex; align-items: center; gap: 10px; }
+
+  .wf-logo-circle {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1.5px solid var(--cream);
+    background: var(--navy-dark);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .wf-logo-inner {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 7px; font-weight: 700;
+    color: var(--navy-dark); letter-spacing: 0.05em;
+  }
+
+  .wf-wordmark {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 13px;
+    color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.1;
+  }
+  .wf-wordmark span {
+    display: block; font-size: 8px; color: var(--cream-dim);
+    letter-spacing: 0.3em; font-weight: 400;
+    font-family: 'Crimson Text', serif; text-transform: uppercase;
+  }
+
+  .wf-nav-links { display: flex; gap: 1.5rem; }
+  .wf-nav-links a {
+    font-family: 'Crimson Text', serif; font-size: 13px;
+    color: var(--cream-dim); text-decoration: none;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .wf-nav-links a:hover { color: var(--gold); }
+
+  .wf-reserve-btn {
+    background: transparent; color: var(--gold);
+    font-family: 'Crimson Text', serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    border: 1px solid var(--gold); padding: 6px 14px; cursor: pointer; border-radius: 2px;
+  }
+
+  .wf-hero {
+    background: var(--navy-dark);
+    padding: 2.25rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(200,160,67,0.4);
+  }
+
+  .wf-since {
+    font-family: 'Crimson Text', serif; font-size: 11px;
+    color: var(--cream-dim); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  .wf-hero-title {
+    font-family: 'Playfair Display', serif; font-weight: 700; font-size: 32px;
+    color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase;
+    margin: 0 0 2px; line-height: 1.1;
+  }
+
+  .wf-bar-rest {
+    font-family: 'Crimson Text', serif; font-size: 11px;
+    color: var(--cream-dim); letter-spacing: 0.35em; text-transform: uppercase; margin: 0 0 1.25rem;
+  }
+
+  .wf-gold-rule {
+    width: 100%; height: 0.5px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 0 1.25rem;
+  }
+
+  .wf-tagline-main {
+    font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px;
+    color: var(--cream); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;
+  }
+
+  .wf-tagline-sub {
+    font-family: 'Crimson Text', serif; font-size: 16px; font-style: italic;
+    color: var(--gold-light); letter-spacing: 0.05em; margin-bottom: 1.25rem;
+  }
+
+  .wf-hero-ctas { display: flex; gap: 12px; justify-content: center; }
+
+  .wf-cta-primary {
+    background: var(--gold); color: var(--navy-dark); border: none;
+    padding: 10px 24px; font-family: 'Playfair Display', serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px;
+  }
+
+  .wf-cta-secondary {
+    background: transparent; color: var(--cream);
+    border: 1px solid rgba(240,230,204,0.4); padding: 10px 24px;
+    font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border-radius: 2px;
+  }
+
+  .wf-feature-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 0.5px solid rgba(200,160,67,0.3);
+    border-bottom: 0.5px solid rgba(200,160,67,0.3);
+  }
+
+  .wf-feature-cell {
+    padding: 1.1rem 1rem; text-align: center;
+    border-right: 0.5px solid rgba(200,160,67,0.25);
+    background: var(--navy-dark);
+  }
+  .wf-feature-cell:last-child { border-right: none; }
+
+  .wf-feature-icon { font-size: 20px; color: var(--gold); margin-bottom: 5px; display: block; }
+
+  .wf-feature-label {
+    font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700;
+    color: var(--cream); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px;
+  }
+
+  .wf-feature-sub {
+    font-family: 'Crimson Text', serif; font-size: 12px; font-style: italic; color: var(--cream-dim);
+  }
+
+  .wf-menu-section { padding: 1.5rem; background: var(--navy); }
+
+  .wf-section-heading {
+    font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream);
+    text-align: center; margin-bottom: 4px;
+  }
+
+  .wf-menu-divider { display: flex; align-items: center; gap: 10px; margin: 6px 0 1.25rem; }
+  .wf-menu-divider-line { flex: 1; height: 0.5px; background: rgba(200,160,67,0.5); }
+  .wf-menu-divider-star { color: var(--gold); font-size: 12px; }
+
+  .wf-menu-item {
+    padding: 10px 0; border-bottom: 0.5px solid rgba(240,230,204,0.12);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  }
+  .wf-menu-item:last-child { border-bottom: none; }
+
+  .wf-item-inner { flex: 1; }
+
+  .wf-item-name {
+    font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700;
+    color: var(--cream); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  .wf-item-desc {
+    font-family: 'Crimson Text', serif; font-size: 13px; font-style: italic;
+    color: var(--cream-dim); margin-top: 2px; line-height: 1.4;
+  }
+
+  .wf-item-price {
+    font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 600;
+    color: var(--gold); white-space: nowrap; flex-shrink: 0;
+  }
+
+  .wf-contact-bar {
+    background: var(--navy-dark); border-top: 1px solid rgba(200,160,67,0.4);
+    padding: 1.25rem 1.5rem; text-align: center;
+  }
+
+  .wf-contact-label {
+    font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream-dim); margin-bottom: 8px;
+  }
+
+  .wf-contact-info {
+    font-family: 'Crimson Text', serif; font-size: 14px;
+    color: var(--cream); letter-spacing: 0.05em; line-height: 1.8;
+  }
+  .wf-contact-info a { color: var(--gold); text-decoration: none; }
+
+  .wf-footer-bar {
+    background: var(--navy-dark); border-top: 1px solid rgba(200,160,67,0.35);
+    padding: 1rem 1.5rem; display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .wf-hours { display: flex; gap: 1.5rem; }
+
+  .wf-hours-block p {
+    font-family: 'Crimson Text', serif; font-size: 11px; color: var(--cream-dim);
+    letter-spacing: 0.1em; text-transform: uppercase; margin: 0;
+  }
+
+  .wf-hours-block strong {
+    font-family: 'Playfair Display', serif; font-weight: 600; font-size: 13px;
+    color: var(--cream); display: block; margin-top: 2px; letter-spacing: 0.05em;
+  }
+
+  .wf-footer-cta {
+    font-family: 'Crimson Text', serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 8px 18px; cursor: pointer; border-radius: 2px;
+  }
+
+  .wf-gift-bar {
+    background: var(--navy); border-top: 0.5px solid rgba(240,230,204,0.12);
+    padding: 0.9rem 1.5rem; text-align: center;
+    font-family: 'Crimson Text', serif; font-size: 13px; font-style: italic;
+    color: var(--cream-dim); letter-spacing: 0.05em;
+  }
+  .wf-gift-bar strong { color: var(--gold); font-style: normal; font-weight: 600; }
+
+  .palette-strip { display: flex; height: 48px; }
+  .palette-swatch {
+    flex: 1; display: flex; align-items: flex-end;
+    justify-content: center; padding-bottom: 6px;
+  }
+  .palette-swatch span {
+    font-family: 'Crimson Text', serif; font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75;
+  }
+</style>
+
+<div class="menu-page">
+  <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Tin Roof Tavern website wireframe — updated lighter navy palette</h2>
+
+  <nav class="wf-nav">
+    <div class="wf-logo-mark">
+      <div class="wf-logo-circle">
+        <div class="wf-logo-inner">TRT</div>
+      </div>
+      <div class="wf-wordmark">Tin Roof<span>Bar &amp; Restaurant</span></div>
+    </div>
+    <div class="wf-nav-links">
+      <a href="#">Menu</a>
+      <a href="#">Drinks</a>
+      <a href="#">Events</a>
+      <a href="#">About</a>
+    </div>
+    <button class="wf-reserve-btn">Reserve a Table</button>
+  </nav>
+
+  <div class="wf-hero bracketed">
+    <p class="wf-since">Since 2023 · Lewisburg, Ohio</p>
+    <h2 class="wf-hero-title">Tin Roof Tavern</h2>
+    <p class="wf-bar-rest">Bar &amp; Restaurant</p>
+    <div class="wf-gold-rule"></div>
+    <div class="wf-tagline-main">Comfort Food</div>
+    <div class="wf-tagline-sub">Family · Quality · Service</div>
+    <div class="wf-gold-rule"></div>
+    <div class="wf-hero-ctas" style="margin-top: 1.25rem;">
+      <button class="wf-cta-primary">View Menu</button>
+      <button class="wf-cta-secondary">Book a Table</button>
+    </div>
+  </div>
+
+  <div class="wf-feature-strip">
+    <div class="wf-feature-cell">
+      <i class="ti ti-tools-kitchen-2 wf-feature-icon" aria-hidden="true"></i>
+      <div class="wf-feature-label">Kitchen</div>
+      <div class="wf-feature-sub">Open until 10 pm</div>
+    </div>
+    <div class="wf-feature-cell">
+      <i class="ti ti-beer wf-feature-icon" aria-hidden="true"></i>
+      <div class="wf-feature-label">Full Bar</div>
+      <div class="wf-feature-sub">Craft &amp; classic pours</div>
+    </div>
+    <div class="wf-feature-cell">
+      <i class="ti ti-calendar-event wf-feature-icon" aria-hidden="true"></i>
+      <div class="wf-feature-label">Events</div>
+      <div class="wf-feature-sub">Live music weekends</div>
+    </div>
+  </div>
+
+  <div class="wf-menu-section">
+    <div class="wf-section-heading">Starters</div>
+    <div class="wf-menu-divider">
+      <div class="wf-menu-divider-line"></div>
+      <span class="wf-menu-divider-star">★</span>
+      <div class="wf-menu-divider-line"></div>
+    </div>
+    <div>
+      <div class="wf-menu-item">
+        <div class="wf-item-inner">
+          <div class="wf-item-name">★ Bavarian Pretzel</div>
+          <div class="wf-item-desc">Giant soft pretzel with house beer cheese and mustard</div>
+        </div>
+        <div class="wf-item-price">| 9</div>
+      </div>
+      <div class="wf-menu-item">
+        <div class="wf-item-inner">
+          <div class="wf-item-name">Garlic Knots</div>
+          <div class="wf-item-desc">Warm pizza dough knots tossed in garlic butter and parmesan, served with marinara</div>
+        </div>
+        <div class="wf-item-price">| 8</div>
+      </div>
+      <div class="wf-menu-item">
+        <div class="wf-item-inner">
+          <div class="wf-item-name">Loaded Nachos</div>
+          <div class="wf-item-desc">House beer cheese, pico, and sour cream — add protein: Beef, Chicken, Pulled Pork +2</div>
+        </div>
+        <div class="wf-item-price">| 9</div>
+      </div>
+      <div class="wf-menu-item">
+        <div class="wf-item-inner">
+          <div class="wf-item-name">Loaded Fries</div>
+          <div class="wf-item-desc">Melted cheese, bacon, tomatoes, sour cream and chives — Make it Tots +2</div>
+        </div>
+        <div class="wf-item-price">| 11</div>
+      </div>
+      <div class="wf-menu-item">
+        <div class="wf-item-inner">
+          <div class="wf-item-name">PJ Cheese Cubes</div>
+          <div class="wf-item-desc">Spicy fried cheese bites with a little kick, served with dipping sauce</div>
+        </div>
+        <div class="wf-item-price">| 9</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-contact-bar bracketed-bottom">
+    <div class="wf-contact-label">For Events &amp; Entertainment</div>
+    <div class="wf-contact-info">
+      937-662-0009 &nbsp;·&nbsp;
+      <a href="#">entertainment@tinrooftavern.com</a> &nbsp;·&nbsp;
+      <a href="#">tinrooftavern.com</a>
+    </div>
+  </div>
+
+  <div class="wf-footer-bar">
+    <div class="wf-hours">
+      <div class="wf-hours-block">
+        <p>Mon – Thu</p>
+        <strong>4 pm – 11 pm</strong>
+      </div>
+      <div class="wf-hours-block">
+        <p>Fri – Sat</p>
+        <strong>11 am – 1 am</strong>
+      </div>
+      <div class="wf-hours-block">
+        <p>Sunday</p>
+        <strong>12 pm – 9 pm</strong>
+      </div>
+    </div>
+    <button class="wf-footer-cta">Get Directions</button>
+  </div>
+
+  <div class="wf-gift-bar">
+    TRT Gift Cards available in <strong>$25 · $50 · $100</strong> — ask your server for details.
+  </div>
+
+  <div style="padding: 1rem 1.5rem 0.5rem; border-top: 0.5px solid rgba(240,230,204,0.1);">
+    <div style="font-family: 'Crimson Text', serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,230,204,0.35); margin-bottom: 8px;">Palette</div>
+    <div class="palette-strip" style="border-radius: 4px; overflow: hidden;">
+      <div class="palette-swatch" style="background: #2e4a60;"><span style="color: rgba(255,255,255,0.5);">Deep Navy</span></div>
+      <div class="palette-swatch" style="background: #3d5a72;"><span style="color: rgba(255,255,255,0.55);">Navy</span></div>
+      <div class="palette-swatch" style="background: #4a6a82;"><span style="color: rgba(255,255,255,0.6);">Steel</span></div>
+      <div class="palette-swatch" style="background: #c8a043;"><span style="color: #2e4a60;">Aged Gold</span></div>
+      <div class="palette-swatch" style="background: #f0e6cc;"><span style="color: #2e4a60;">Parchment</span></div>
+    </div>
+  </div>
+  <div style="height: 1rem; background: var(--navy);"></div>
+</div>
